@@ -5,7 +5,7 @@ NOTE: TP de deux slots de 1h20
 ## Nom du(des) étudiant(e)(s) de ce monôme/binôme 
 WARNING: NE PAS OUBLIER DE MENTIONNER LES DEUX NOMS SI VOUS ETES EN BINOME!
 
-#XXX# (et #YYY#)
+DEFONTES AVELAR François et TUET Pierrig
 
 Commentaires éventuels des étudiants : #XXXXXX#
 
@@ -38,20 +38,29 @@ TIP: [Rappel Git] Trois dépôts sont ici utilisés: le dépot Github de l'ensei
 * Observer le code du projet `todolist-debut-ex1`
 
 *Le code est-il structuré en couches ? Quel problèmes ce code peut-il poser ?*
+Non, le code n'est pas structuré en couches, toutes les fonctionnalités se trouvent dans un seul et même package, c'est une architecture monolithique.
+Cela pose problème en terme de maintenabilité et d'évolution, il sera difficile de faire évoluer des composants du projet car ils sont tous interdépendants.
 
 *Où se trouve le code métier (voir la règle de gestion RG 1) ?*
+Le code métier se trouve dans le contrôleur "TodoListController.java".
 
 *Cette règle est-elle facilement testable par un test unitaire ?*
+Non, la première chose qui saute aux yeux est la visibilité "private" de la méthode ce qui empêchera de la tester dans une autre classe.
+Hormis ce problème, comme l'application est petite la règle n'est pas difficile à tester, il suffirait d'instancier un item datant de plus de 24h
+et après exécution de la méthode avec cet item en paramètre vérifier que la chaine de caractère contient bien "LATE".
 
 * Lancer une base PostgreSQL en Docker dans un terminal (on lance ici la base en mode interactif pour visualiser son activité. Pour la lancer en tâche de fond, remplacer les options `it` par `d` comme 'daemon'):
 ```bash
 docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 ```
 *Expliquer cette ligne de commande (y compris les options utilisées)*
+Avec cette commande, nous allons lancer une base postegres dans un conteneur docker en spécifiant des options : -it pour lancer en mode intéractif 
+ou -d pour la lancer en fond, -e pour saisir des variables d'environnement et -p pour spécifier le port.
 
 * Compléter le code manquant dans la méthode `TodoListController.createTodoItem()`
 
 *Pourquoi `todoItemRepository` est-il `null` ? Quelle est la meilleure façon de l'injecter ?*
+Il est nul car il manque l'annotation d'injection pour le repository, la meilleure façon de l'injecter est de le faire dans le controleur pour faciliter les tests.
 
 * Modifier le code en conséquence.
 
