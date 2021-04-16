@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.http.HttpStatus;
 
 import com.acme.todolist.application.port.in.GetTodoItems;
 import com.acme.todolist.domain.TodoItem;
@@ -43,9 +44,8 @@ public class TodoListController {
 	// Endpoint de type POST vers "/todos"
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("/todos")
-	public void ajouterItem(@RequestBody TodoItem item) {
-		this.addTodoItem.AddTodoItem(todoItem);		
+	public void ajouterItem(@RequestBody TodoItem todoItem) {
+		this.addTodoItem.addTodoItem(todoItem);		
 	}
-	
 	
 }

@@ -1,7 +1,7 @@
 package com.acme.todolist;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.acme.todolist.domain.TodoItem;
 
@@ -15,7 +15,7 @@ public class TodoItemTest {
      */
     @Test
     public void item_is_late_true(){
-        TodoItem item = new TodoItem("1",Instant.now().min(25,ChronoUnit.HOURS),"test renvoyant true");
+        TodoItem item = new TodoItem("1",Instant.now().minus(25,ChronoUnit.HOURS),"test renvoyant true");
         assertTrue(item.isLate());
     }
     /**
@@ -23,7 +23,7 @@ public class TodoItemTest {
      */
     @Test
     public void item_is_late_verify_string(){
-        TodoItem item = new TodoItem("1",Instant.now().min(25,ChronoUnit.HOURS),"test renvoyant true");
+        TodoItem item = new TodoItem("2",Instant.now().minus(25,ChronoUnit.HOURS),"test renvoyant true");
         assertTrue(item.finalContent().contains("[LATE!]"));
     }
 }
