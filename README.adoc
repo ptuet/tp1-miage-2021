@@ -3,11 +3,9 @@
 NOTE: TP de deux slots de 1h20
 
 ## Nom du(des) étudiant(e)(s) de ce monôme/binôme 
-WARNING: NE PAS OUBLIER DE MENTIONNER LES DEUX NOMS SI VOUS ETES EN BINOME!
-
 DEFONTES AVELAR François et TUET Pierrig
 
-Commentaires éventuels des étudiants : #XXXXXX#
+Commentaires éventuels des étudiants : Tout réalisé sauf la partie "s'il vous reste du temps" (tests d'intégration).
 
 ## Pré-requis 
 
@@ -102,6 +100,10 @@ Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombe
   - la couche `domain` qui contient les entités (au sens DDD, pas au sens JPA). En général des classes complexes (méthodes riches, relations entre les entités)
 
 *Rappeler en quelques lignes les grands principes de l'architecture hexagonale.*
+L’objectif principal de l’architecture hexagonale est de découpler la partie métier d’une application de ses services techniques. 
+Ceci dans le but de préserver la partie métier pour qu’elle ne contienne que des éléments liés aux traitements fonctionnels. 
+Cette architecture est aussi appelée “Ports et Adaptateurs” car l’interface entre la partie métier et l’extérieur se fait, d’une part, en utilisant les ports qui sont des interfaces définissant les entrées ou sorties et d’autre part, les adaptateurs qui sont des objets adaptant le monde extérieur à la partie métier.
+
 
 Compléter ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui :
 
@@ -118,8 +120,11 @@ _Temps estimé : 20 mins_
 * Implémenter (en junit) des TU sur la règle de gestion qui consiste à afficher `[LATE!]` dans la description d'un item en retard de plus de 24h.
 
 *Quels types de tests devra-t-on écrire pour les adapteurs ?* 
+Pour la partie adaptater, il est nécessaire d'écrire des tests d'intégrations.
 
 *Que teste-on dans ce cas ?*
+Dans ce cas on teste l'application dans sa globalité, cela incluant les interactions entre les différents composants. 
+Ces tests permettent  de tester en situation proche du réel, ils peuvent donc inclure des tests de charge, de robustesse et de performance.
 
 *S'il vous reste du temps, écrire quelques uns de ces types de test.*
 
